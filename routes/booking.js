@@ -77,4 +77,27 @@ router.get('/:id', (req, res, next) => {
     })
 });
 
+// POST data into table
+router.post('/', (req, res, next) => {
+  Booking.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      identityNumber: req.body.identityNumber,
+      startDate: req.body.startDate,
+      lastDate: req.body.lastDate,
+      roomNumber: req.body.roomNumber
+    })
+    .then(() => {
+      res.send({
+        message: 'Data created successfully.'
+      });
+    })
+    .catch(err => {
+      res.send({
+        message: 'Unable create data',
+        err
+      });
+    });
+});
+
 module.exports = router;
