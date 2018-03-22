@@ -1,2 +1,2 @@
-# Booking Hotel Api
+# Booking Hotel API
 API for Booking Hotel System
