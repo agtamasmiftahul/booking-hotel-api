@@ -127,4 +127,24 @@ router.put('/:id', (req, res, next) => {
     });
 });
 
+// DELETE data
+router.delete('/:id', (req, res, next) => {
+  Booking.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(() => {
+      res.send({
+        message: 'Delete data successfully.'
+      });
+    })
+    .catch(err => {
+      res.send({
+        message: 'Unable create data',
+        err
+      });
+    });
+});
+
 module.exports = router;
