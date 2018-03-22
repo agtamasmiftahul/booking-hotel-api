@@ -100,4 +100,31 @@ router.post('/', (req, res, next) => {
     });
 });
 
+// UPDATE data
+router.put('/:id', (req, res, next) => {
+  Booking.update({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      indentityNumber: req.body.identityNumber,
+      startDate: req.body.startDate,
+      lastDate: req.body.lastDate,
+      roomNumber: req.body.roomNumber
+    }, {
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(() => {
+      res.send({
+        message: 'Update data successfully.'
+      });
+    })
+    .catch(err => {
+      res.send({
+        message: 'Unable update data',
+        err
+      });
+    });
+});
+
 module.exports = router;
